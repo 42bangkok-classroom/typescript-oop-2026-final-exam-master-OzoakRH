@@ -2,12 +2,11 @@ export interface Purchase {
     id: number;
     customerName: string;
     purchaseDate: string;
-    item: [];
+    items: PurchaseItem[];
     totalPrice: number;
-}
-
-interface PurchaseItem extends Purchase {
-    productID: number;
+  }
+  export interface PurchaseItem {
+    productId: number;
     quantity: number;
     price: number;
-}
+  }
