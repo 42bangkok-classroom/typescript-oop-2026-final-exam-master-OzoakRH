@@ -1,21 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import fs from 'fs';
 import { Product } from './product.interface';
-import { ApiResponse } from '../interfaces/response.interface';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-
-const filepath = join(__dirname, '../../data/products.json');
-
 @Injectable()
 export class ProductService {
-  findAll(): ApiResponse<Product[]> {
-    const readProductData = readFileSync(filepath, 'utf-8');
-    const productData = JSON.parse(readProductData) as Product[];
-
-    return {
-      success: true,
-      data: productData,
-      message: 'Fetched products successfully',
-    };
+  findAll(): Product[] {
+    const data = fs.readFileSync('data/products.json', 'utf-8');
+    const product = JSON.parse(data) as Product[];
+    return product;
   }
 }
