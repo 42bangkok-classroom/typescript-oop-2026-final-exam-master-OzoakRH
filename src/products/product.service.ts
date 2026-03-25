@@ -11,7 +11,7 @@ export class ProductService {
   findAll(): ApiResponse<Product[]> {
     const readProductData = readFileSync(filepath, 'utf-8');
     const productData = JSON.parse(readProductData) as Product[];
-    
+
     return {
       success: true,
       data: productData,
